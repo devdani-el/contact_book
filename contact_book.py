@@ -2,6 +2,7 @@ contacts = []
 
 def add_contact():
     while True:
+        print('Enter "exit" to stop.')
         name = str(input('Name: ')).strip().capitalize()
         if name.lower() == 'exit':
             break
