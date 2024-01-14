@@ -14,7 +14,6 @@ def add_contact():
             except ValueError:
                 print('Please enter a valid number.')
 
-        print('Enter "no" to exclude the addition of an email.')
         while True:
             email = input('E-mail: ').strip().lower()
             if email == '':
@@ -22,7 +21,7 @@ def add_contact():
             elif email == 'no':
                 break
             if '@' not in email or '.' not in email:
-                print('Please enter a valid email or type "no" to exclude.')
+                print('Please enter a valid email.')
             else:
                 break
 
