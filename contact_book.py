@@ -21,6 +21,7 @@ def add_contact():
         while True:
             email = input('E-mail: ').strip().lower()
             if email == '':
+                clear_screen()
                 break
             elif email == 'no':
                 break
@@ -30,9 +31,20 @@ def add_contact():
                 clear_screen()
                 break
 
-        novo_contato = {'name': name, 'number': number, 'email': email}
-        contacts.append(novo_contato)
+        new_contact = {'name': name, 'number': number, 'email': email}
+        contacts.append(new_contact)
 
+
+def search_contact():
+    message = str(input('Contact to search: ')).capitalize().strip()
+    found = False
+    for contact in contacts:
+        if message == contact['name']:
+            print(f"Name: {contact['name']}\nPhone number: {contact['number']}\nE-mail address: {contact['email']}")
+            found = True
+            break
+    if not found:
+        print("Contact not found.")
 
 def clear_screen():
     system('cls' if name == 'nt' else 'clear')
@@ -45,11 +57,15 @@ while True:
     for contact in contacts:
         print(f"Name: {contact['name']} \nPhone number: {contact['number']} \nE-mail address: {contact['email']}\n")
     print('Enter 1: + new contact')
+    print('Enter 2: Search a contact')
     try:
         menu = int(input('Option: '))
         if menu == 1:
             clear_screen()
             add_contact()
+        elif menu == 2:
+            clear_screen()
+            search_contact()
         print('-' * 30)
     except ValueError:
         print('Please enter a valid option.')
